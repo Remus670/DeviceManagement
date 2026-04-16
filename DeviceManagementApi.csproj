@@ -1,10 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DeviceManagementApi.Tests\**" />
+    <Content Remove="DeviceManagementApi.Tests\**" />
+    <EmbeddedResource Remove="DeviceManagementApi.Tests\**" />
+    <None Remove="DeviceManagementApi.Tests\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.6" />
@@ -16,5 +22,4 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
   </ItemGroup>
-
 </Project>
