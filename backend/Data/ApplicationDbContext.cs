@@ -12,6 +12,7 @@ namespace DeviceManagementApi.Data
 
         public DbSet<User> Users => Set<User>();
         public DbSet<Device> Devices => Set<Device>();
+        public DbSet<AppUser> AppUsers => Set<AppUser>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
