@@ -40,7 +40,7 @@ A full-stack web application for managing company mobile devices, built with ASP
 - The generated description is returned to the frontend and populated in the description field
 - The API key is stored securely in appsettings.json and never exposed to the frontend
 
-### Phase 5 - Bonus: Free-Text Search
+### Phase 5 - Free-Text Search
 - Search devices by name, manufacturer, processor or RAM
 - Case-insensitive and robust to formatting differences (extra spaces, punctuation)
 - Query split into individual tokens for flexible matching
@@ -58,20 +58,23 @@ A full-stack web application for managing company mobile devices, built with ASP
 
 ### 1. Clone the repository
 
+```bash
 git clone https://github.com/Remus670/DeviceManagement.git
 cd DeviceManagement
+```
 
 ### 2. Set up the Database
 
-Open SQL Server Management Studio and run the scripts in order:
+Open **SQL Server Management Studio** and run the following scripts **in order**:
 
 backend/database/01_create_database.sql
 backend/database/02_seed_data.sql
 
 ### 3. Configure the Backend
 
-Open backend/appsettings.json and update with your values:
+Open `backend/appsettings.json` and update it with your values:
 
+```json
 {
   "ConnectionStrings": {
     "DefaultConnection": "Server=localhost;Database=DeviceManagementDb;Trusted_Connection=True;TrustServerCertificate=True;"
@@ -80,22 +83,30 @@ Open backend/appsettings.json and update with your values:
     "ApiKey": "YOUR_GEMINI_API_KEY"
   }
 }
+```
+
+> **Gemini API Key** — Get a free key at https://aistudio.google.com/app/apikey  
+> The key is read from `appsettings.json` and used in `AiController.cs` — it is never exposed to the frontend.
 
 ### 4. Run the Backend
 
+```bash
 cd backend
 dotnet run
+```
 
-API available at http://localhost:5219
-Swagger UI at http://localhost:5219/swagger
+- API available at: http://localhost:5219  
+- Swagger UI at: http://localhost:5219/swagger
 
 ### 5. Run the Frontend
 
+```bash
 cd device-management-ui
 npm install
 ng serve
+```
 
-App available at http://localhost:4200
+App available at: http://localhost:4200
 
 ## Running Tests
 
