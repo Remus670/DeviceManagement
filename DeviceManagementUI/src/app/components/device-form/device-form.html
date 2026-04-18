@@ -1,0 +1,66 @@
+<div class="form-container">
+  <div class="form-header">
+    <button class="btn-secondary" (click)="goBack()">← Back</button>
+    <h1>{{ isEditMode ? 'Edit Device' : 'Add New Device' }}</h1>
+  </div>
+
+  @if (errorMessage) {
+    <div class="alert alert-error">{{ errorMessage }}</div>
+  }
+
+  @if (successMessage) {
+    <div class="alert alert-success">{{ successMessage }}</div>
+  }
+
+  <div class="card form-card">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Name *</label>
+        <input type="text" [(ngModel)]="device.name" placeholder="e.g. Samsung S20 FE" />
+      </div>
+      <div class="form-group">
+        <label>Manufacturer *</label>
+        <input type="text" [(ngModel)]="device.manufacturer" placeholder="e.g. Samsung" />
+      </div>
+      <div class="form-group">
+        <label>Type *</label>
+        <select [(ngModel)]="device.type">
+          <option value="Phone">Phone</option>
+          <option value="Tablet">Tablet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Operating System *</label>
+        <input type="text" [(ngModel)]="device.operatingSystem" placeholder="e.g. Android" />
+      </div>
+      <div class="form-group">
+        <label>OS Version *</label>
+        <input type="text" [(ngModel)]="device.osVersion" placeholder="e.g. 14" />
+      </div>
+      <div class="form-group">
+        <label>Processor *</label>
+        <input type="text" [(ngModel)]="device.processor" placeholder="e.g. Snapdragon 8 Gen 1" />
+      </div>
+      <div class="form-group">
+        <label>RAM Amount *</label>
+        <input type="text" [(ngModel)]="device.ramAmount" placeholder="e.g. 8 GB" />
+      </div>
+      <div class="form-group full-width">
+        <label>Description</label>
+        <div class="description-group">
+          <textarea [(ngModel)]="device.description" placeholder="Enter device description or generate one with AI..." rows="3"></textarea>
+          <button class="btn-ai" (click)="generateDescription()" [disabled]="generatingDescription">
+            {{ generatingDescription ? '⏳ Generating...' : '✨ Generate with AI' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-secondary" (click)="goBack()">Cancel</button>
+      <button class="btn-primary" (click)="onSubmit()">
+        {{ isEditMode ? 'Update Device' : 'Create Device' }}
+      </button>
+    </div>
+  </div>
+</div>

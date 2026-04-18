@@ -1,0 +1,29 @@
+<div class="app-container">
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-brand">
+        <span class="nav-icon">📱</span>
+        <span>Device Management</span>
+      </div>
+    </div>
+
+    <div class="nav-logo-center">
+      <img src="logo.png" height="60" alt="logo" style="height: 60px; width: auto;" />
+    </div>
+
+    <div class="nav-right">
+      @if (isLoggedIn()) {
+        <div class="nav-actions">
+          <span class="nav-email">{{ userEmail.split('@')[0] }}</span>
+          <button class="btn-secondary btn-sm" (click)="logout()">Logout</button>
+        </div>
+      }
+    </div>
+  </nav>
+  <main class="main-content">
+    <router-outlet />
+  </main>
+  <footer class="footer">
+    <p>© 2026 Sabadus Remus. All Rights Reserved.</p>
+  </footer>
+</div>

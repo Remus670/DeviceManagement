@@ -1,0 +1,182 @@
+.device-list-container {
+  padding: 1rem 0;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.list-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #60a5fa;
+  letter-spacing: 0.5px;
+}
+
+.devices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.device-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.device-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.device-type-badge {
+  background: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #2563eb;
+}
+
+.device-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.device-manufacturer {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.device-specs {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.device-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #34d399;
+  font-weight: 500;
+}
+
+.device-user.unassigned {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.loading {
+  text-align: center;
+  color: #60a5fa;
+  font-size: 1.2rem;
+  padding: 3rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: linear-gradient(135deg, #0f2044 0%, #1a3a6b 100%);
+  border: 1px solid #2d4a8a;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.modal h2 {
+  font-size: 1.5rem;
+  color: #e2e8f0;
+  margin-bottom: 0.75rem;
+}
+
+.modal p {
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.modal p strong {
+  color: #e2e8f0;
+}
+
+.modal-warning {
+  color: #f87171 !important;
+  font-size: 0.85rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.search-bar input {
+  flex: 1;
+  background: #0a1628;
+  border: 1px solid #2d4a8a;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-bar input:focus {
+  border-color: #3b82f6;
+}
+
+.no-results {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  padding: 3rem;
+  font-style: italic;
+}

@@ -1,0 +1,78 @@
+<div class="device-list-container">
+  <div class="list-header">
+    <h1>Device Inventory</h1>
+    <button class="btn-primary" (click)="goToCreate()">+ Add Device</button>
+  </div>
+
+  <div class="search-bar">
+    <input 
+      type="text" 
+      [(ngModel)]="searchQuery" 
+      placeholder="Search by name, manufacturer, processor or RAM..." 
+      (keyup.enter)="search()"
+    />
+    <button class="btn-primary" (click)="search()" [disabled]="searching">
+      {{ searching ? 'Searching...' : '🔍 Search' }}
+    </button>
+    @if (searchQuery) {
+      <button class="btn-secondary" (click)="clearSearch()">✕ Clear</button>
+    }
+  </div>
+
+  @if (loading) {
+    <div class="loading">Loading devices...</div>
+  }
+
+  @if (!loading && devices.length === 0 && hasSearched) {
+    <div class="no-results">No devices found for "{{ searchQuery }}"</div>
+  }
+
+  @if (!loading) {
+    <div class="devices-grid">
+      @for (device of devices; track device.id) {
+        <div class="card device-card">
+          <div class="device-card-header">
+            <span class="device-type-badge">{{ device.type }}</span>
+            <button class="btn-danger btn-sm" (click)="confirmDelete(device.id, device.name)">🗑</button>
+          </div>
+          <h2 class="device-name">{{ device.name }}</h2>
+          <p class="device-manufacturer">{{ device.manufacturer }}</p>
+          <div class="device-specs">
+            <span>{{ device.operatingSystem }} {{ device.osVersion }}</span>
+            <span>{{ device.ramAmount }}</span>
+          </div>
+          @if (device.user) {
+            <div class="device-user">
+              <span>👤</span>
+              <span>{{ device.user.name }}</span>
+            </div>
+          }
+          @if (!device.user) {
+            <div class="device-user unassigned">
+  <span>Not Assigned</span>
+</div>
+          }
+          <div class="card-actions">
+            <button class="btn-secondary btn-sm" (click)="viewDevice(device.id)">View</button>
+            <button class="btn-primary btn-sm" (click)="editDevice(device.id)">Edit</button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+@if (showDeleteModal) {
+  <div class="modal-overlay">
+    <div class="modal">
+      <div class="modal-icon">🗑️</div>
+      <h2>Delete Device</h2>
+      <p>Are you sure you want to delete <strong>{{ deviceToDeleteName }}</strong>?</p>
+      <p class="modal-warning">This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" (click)="cancelDelete()">Cancel</button>
+        <button class="btn-danger" (click)="executeDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+}

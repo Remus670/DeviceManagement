@@ -1,0 +1,64 @@
+<div class="detail-container">
+  @if (loading) {
+    <div class="loading">Loading device...</div>
+  }
+
+  @if (!loading && device) {
+    <div class="detail-header">
+      <button class="btn-secondary" (click)="goBack()">← Back</button>
+      <button class="btn-primary" (click)="editDevice()">Edit Device</button>
+    </div>
+
+    @if (message) {
+      <div class="alert alert-success">{{ message }}</div>
+    }
+
+    @if (errorMessage) {
+      <div class="alert alert-error">{{ errorMessage }}</div>
+    }
+
+    <div class="detail-card card">
+      <div class="detail-top">
+        <div>
+          <span class="device-type-badge">{{ device.type }}</span>
+          <h1 class="detail-name">{{ device.name }}</h1>
+          <p class="detail-manufacturer">{{ device.manufacturer }}</p>
+        </div>
+        <div class="assign-actions">
+          @if (isUnassigned) {
+            <button class="btn-primary" (click)="assign()">Assign to me</button>
+          }
+          @if (isAssignedToMe) {
+            <button class="btn-danger" (click)="unassign()">Unassign</button>
+          }
+        </div>
+      </div>
+
+      <div class="detail-specs">
+        <div class="spec-item">
+          <span class="spec-label">Operating System</span>
+          <span class="spec-value">{{ device.operatingSystem }} {{ device.osVersion }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Processor</span>
+          <span class="spec-value">{{ device.processor }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">RAM</span>
+          <span class="spec-value">{{ device.ramAmount }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Assigned To</span>
+          <span class="spec-value assigned">{{ device.user?.name || 'Not Assigned' }}</span>
+        </div>
+      </div>
+
+      @if (device.description) {
+        <div class="detail-description">
+          <span class="spec-label">Description</span>
+          <p>{{ device.description }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>
