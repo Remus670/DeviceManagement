@@ -21,7 +21,7 @@ namespace DeviceManagementApi.Controllers
         public async Task<IActionResult> GenerateDescription([FromBody] DeviceDescriptionRequest request)
         {
            
-           var apiKey = _configuration["Gemini:ApiKey"];
+           var apiKey =  "INSERT API KEY HERE" ;
 Console.WriteLine($"API Key used: {apiKey}");
             var prompt = $"Generate a concise, human-readable description for a device with these specs: " +
                         $"Name: {request.Name}, Manufacturer: {request.Manufacturer}, " +
