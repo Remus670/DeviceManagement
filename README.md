@@ -104,6 +104,7 @@ dotnet test
 
 ## Project Structure
 
+```
 DeviceManagement/
 ├── backend/
 │   ├── Controllers/
@@ -131,6 +132,7 @@ DeviceManagement/
             ├── models/
             ├── guards/
             └── interceptors/
+```
 ## API Endpoints
 
 Method  | Endpoint                        | Description
